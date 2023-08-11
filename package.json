@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/tailwindcss": "^0.2.0",
+    "@tremor/react": "^3.6.1",
     "autoprefixer": "10.4.14",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.13",
