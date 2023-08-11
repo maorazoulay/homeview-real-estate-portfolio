@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "title": "Property 1",
+        "address": "1000 Main St, Suite 330, Boston, MA 02111-130",
+        "propertyType": "Condo",
+        "images": ["/boston-1.jpg"],
+        "purchasePrice": 1000000,
+        "purchaseDate": 1690838667220,
+        "marketValue": 1100000
+    },
+    {
+        "id": 2,
+        "title": "Property 2",
+        "address": "1250 Kissinger Rd, Hallandale Beach, FL 33547-20063",
+        "propertyType": "Single-Family",
+        "images": ["/hallandale-2.jpg"],
+        "purchasePrice": 1000000,
+        "purchaseDate": 1690838667220,
+        "marketValue": 1100000
+    }, 
+    {
+        "id": 3,
+        "title": "Property 3",
+        "address": "1250 Kissinger Rd, Hallandale Beach, FL 33547-20063",
+        "propertyType": "Single-Family",
+        "images": ["/3.webp"],
+        "purchasePrice": 1000000,
+        "purchaseDate": 1690838667220,
+        "marketValue": 1100000
+    }, 
+    {
+        "id": 4,
+        "title": "Property 4",
+        "address": "1250 Kissinger Rd, Hallandale Beach, FL 33547-20063",
+        "propertyType": "Single-Family",
+        "images": ["/4.webp"],
+        "purchasePrice": 1000000,
+        "purchaseDate": 1690838667220,
+        "marketValue": 1100000
+    }, 
+    {
+        "id": 5,
+        "title": "Property 5",
+        "address": "1250 Kissinger Rd, Hallandale Beach, FL 33547-20063",
+        "propertyType": "Single-Family",
+        "images": ["/5.webp"],
+        "purchasePrice": 1000000,
+        "purchaseDate": 1690838667220,
+        "marketValue": 1100000
+    },
+    {
+        "id": 6,
+        "title": "Property 6",
+        "address": "1000 Main St, Suite 330, Boston, MA 02111-130",
+        "propertyType": "condo",
+        "images": ["/6.webp"],
+        "purchasePrice": 1000000,
+        "purchaseDate": 1690838667220,
+        "marketValue": 1100000
+    },
+    {
+        "id": 7,
+        "title": "Property 7",
+        "address": "1000 Main St, Suite 330, Boston, MA 02111-130",
+        "propertyType": "Single-Family",
+        "images": ["/7.webp"],
+        "purchasePrice": 1000000,
+        "purchaseDate": 1690838667220,
+        "marketValue": 1100000
+    },
+    {
+        "id": 8,
+        "title": "Property 8",
+        "address": "1000 Main St, Suite 330, Boston, MA 02111-130",
+        "propertyType": "Single-Family",
+        "images": ["/8.webp"],
+        "purchasePrice": 1000000,
+        "purchaseDate": 1690838667220,
+        "marketValue": 1100000
+    },
+    {
+        "id": 9,
+        "title": "Property 9",
+        "address": "1000 Main St, Suite 330, Boston, MA 02111-130",
+        "propertyType": "Single-Family",
+        "images": ["/9.webp"],
+        "purchasePrice": 1000000,
+        "purchaseDate": 1690838667220,
+        "marketValue": 1100000
+    }
+]
