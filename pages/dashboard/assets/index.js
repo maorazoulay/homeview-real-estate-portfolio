@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { getAllAssetsForUser } from "@/api"
+import { getAllAssetsForUser } from "@/apiBridge"
 import DashboardLayout from "@/components/layouts/DashboardLayout"
 
 export default function Assets() {
