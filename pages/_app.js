@@ -6,3 +6,8 @@ export default function MyApp({ Component, pageProps }) {
  
   return getLayout(<Component {...pageProps} />)
 }
+
+// TODO: Authenticatation
+// TODO: MongoDB integration with mocked data
+// TODO: build out API
+// TODO: Add option to add assets
