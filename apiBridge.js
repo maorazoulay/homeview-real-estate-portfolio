@@ -1,7 +1,9 @@
 const ASSETS_ENDPOINT = '/api/assets'
 
 export async function getAllAssetsForUser(userId) {
-    const res = await fetch(ASSETS_ENDPOINT)
+    const res = await fetch(ASSETS_ENDPOINT + '?' + new URLSearchParams({
+        userId: userId
+    }))
     return await res.json()
 }
 
