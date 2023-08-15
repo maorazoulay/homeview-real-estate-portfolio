@@ -36,5 +36,4 @@ const assetSchema = new Schema({
     }
 })
 
-const Asset = models.Asset || model("Asset", assetSchema)
-export default Asset
+export default models.Asset || model("Asset", assetSchema)
