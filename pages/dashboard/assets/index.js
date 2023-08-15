@@ -35,7 +35,7 @@ export default function Assets() {
           src={asset.images[0]}
           alt="property image"
           // fill
-          width={400}
+          width={410}
           height={400}
           priority
         />
