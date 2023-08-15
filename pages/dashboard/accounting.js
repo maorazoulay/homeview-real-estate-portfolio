@@ -7,14 +7,14 @@ export default function Accounting() {
 
     useEffect(() => {
 
-        getAllAssetsForUser(1).then(assets => {
-            assets.forEach(asset => {
-                insertAsset(asset)
-                    .then(res => {
-                        console.log(res)
-                    })
-            })
-        })
+        // getAllAssetsForUser(1).then(assets => {
+        //     assets.data.forEach(asset => {
+        //         insertAsset(asset)
+        //             .then(res => {
+        //                 console.log(res)
+        //             })
+        //     })
+        // })
     }, [])
 
     // console.log(response);
