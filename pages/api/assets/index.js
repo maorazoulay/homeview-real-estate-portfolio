@@ -2,14 +2,14 @@ import dbConnect from "@/db/dbConnect"
 import Asset from "@/db/Asset"
 
 export default async function handler(req, res) {
-    const { method } = req
+    const {query: { userId }, method} = req
 
     await dbConnect()
 
     switch (method) {
         case 'GET':
             try {
-                const assets = await Asset.find({})
+                const assets = await Asset.find({userId: userId})
                 res.status(200).json({ success: true, data: assets })
             } catch (error) {
                 res.status(400).json({ success: false })
