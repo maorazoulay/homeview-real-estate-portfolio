@@ -14,7 +14,7 @@ const assetSchema = new Schema({
         type: String,
         required: true,
     },
-    propetyType: {
+    propertyType: {
         type: String,
         required: true,
     },
@@ -38,5 +38,3 @@ const assetSchema = new Schema({
 
 const Asset = models.Asset || model("Asset", assetSchema)
 export default Asset
-
-
