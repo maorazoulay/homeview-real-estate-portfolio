@@ -13,8 +13,8 @@ export default function Assets() {
     async function loadAssets(userId){
       setLoading(true)
       try{
-        const assets = await getAllAssetsForUser(userId)
-        setAssets(assets)
+        const { data } = await getAllAssetsForUser(userId)
+        setAssets(data)
       } catch(error){
         setError(error)
       } finally {
@@ -29,8 +29,8 @@ export default function Assets() {
   // map and display them here
   const assetElements = assets.map(asset => {
     return (
-      <Link href={`/dashboard/assets/${asset.id}`} 
-      className="cursor-pointer hvr-grow asset-item gap-2" key={asset.id}>
+      <Link href={`/dashboard/assets/${asset._id}`} 
+      className="cursor-pointer hvr-grow asset-item gap-2" key={asset._id}>
         <Image
           src={asset.images[0]}
           alt="property image"
