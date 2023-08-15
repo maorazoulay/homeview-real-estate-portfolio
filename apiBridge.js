@@ -5,12 +5,12 @@ export async function getAllAssetsForUser(userId) {
     return await res.json()
 }
 
-export async function getAllMovies() {
-    const res = await fetch("/api/movies")
+export async function getAsset(assetId) {
+    const res = await fetch('/mocked_assets.json')
     return await res.json()
 }
 
-export async function createAsset(data) {
+export async function insertAsset(data) {
     // Default options are marked with *
     const response = await fetch(ASSETS_ENDPOINT, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -24,6 +24,6 @@ export async function createAsset(data) {
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
-    return response.json();
+    })
+    return response.json()
 }
