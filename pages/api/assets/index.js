@@ -1,5 +1,5 @@
 import dbConnect from "@/db/dbConnect"
-import Asset from "@/db/Asset"
+import { insertNewAsset, readUserAssets } from "@/db/dbOperations"
 
 export default async function handler(req, res) {
     const {query: { userId }, method} = req
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const assets = await Asset.find({userId: userId})
+                const assets = await readUserAssets(userId)
                 res.status(200).json({ success: true, data: assets })
             } catch (error) {
                 res.status(400).json({ success: false })
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
             break
         case 'POST':
             try {
-                const asset = await Asset.create(req.body)
+                const asset = await insertNewAsset(req.body)
                 console.log("Asset: ", asset);
                 res.status(201).json({ success: true, data: asset })
             } catch (error) {
