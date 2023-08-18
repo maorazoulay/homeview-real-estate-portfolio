@@ -6,8 +6,8 @@ export default function Page() {
   return <p>ID: {router.query.id}</p>
 }
 
-// Add getStaticPaths function here...
-//  see https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths
+// You should fetch data on the client side in here, use the SWR library:
+// https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side#client-side-data-fetching-with-swr
 
 Page.getLayout = function getLayout(page){
   return (
