@@ -1,27 +1,22 @@
-import { useEffect, useState } from "react"
 import DashboardLayout from "@/components/layouts/DashboardLayout"
-import { insertAsset, getAllAssetsForUser } from "@/apiBridge"
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Accounting() {
-    const [response, setResponse] = useState({})
-
-    useEffect(() => {
-
-        // getAllAssetsForUser(1).then(assets => {
-        //     assets.data.forEach(asset => {
-        //         insertAsset(asset)
-        //             .then(res => {
-        //                 console.log(res)
-        //             })
-        //     })
-        // })
-    }, [])
-
-    // console.log(response);
-
+  const { data: session } = useSession()
+  if (session) {
     return (
-        <h1>response</h1>
+      <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
     )
+  }
+  return (
+    <>
+      Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
+    </>
+  )
 }
 
 Accounting.getLayout = function getLayout(page) {
