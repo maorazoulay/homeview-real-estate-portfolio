@@ -1,5 +1,5 @@
 import dbConnect from '@/db/dbConnect'
-import Asset from '@/db/Asset'
+import { deleteAsset, findAssetById, updateAsset } from '@/db/dbOperations'
 
 export default async function handler(req, res) {
   const {query: { assetId }, method} = req
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const asset = await Asset.findById(assetId)
+        const asset = await findAssetById(assetId)
         if (!asset) {
           return res.status(400).json({ success: false })
         }
@@ -21,10 +21,7 @@ export default async function handler(req, res) {
 
     case 'PUT':
       try {
-        const asset = await Asset.findByIdAndUpdate(assetId, req.body, {
-          new: true,
-          runValidators: true,
-        })
+        const asset = await updateAsset(assetId, req.body)
         if (!asset) {
           return res.status(400).json({ success: false })
         }
@@ -36,7 +33,7 @@ export default async function handler(req, res) {
 
     case 'DELETE':
       try {
-        const deletedAsset = await Asset.deleteOne({ _id: assetId })
+        const deletedAsset = await deleteAsset(assetId)
         if (!deletedAsset) {
           return res.status(400).json({ success: false })
         }
