@@ -1,7 +1,17 @@
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "../auth/[...nextauth]"
 import dbConnect from '@/db/dbConnect'
 import { deleteAsset, findAssetById, updateAsset } from '@/db/dbOperations'
+import { UNAUTHORIZED } from "@/server/serverUtils"
 
 export default async function handler(req, res) {
+  const session = await getServerSession(req, res, authOptions)
+
+  if(!session) {
+    return res.status(UNAUTHORIZED.status)
+    .json({success: false, error: UNAUTHORIZED.error})
+  }
+
   const {query: { assetId }, method} = req
 
   await dbConnect()
