@@ -1,5 +1,5 @@
-import dbConnect from "@/db/dbConnect"
-import { insertNewAsset, readUserAssets } from "@/db/dbOperations"
+import dbConnect from '@/db/dbConnect'
+import { insertNewAsset, readUserAssets } from '@/db/dbOperations'
 
 export default async function handler(req, res) {
     const {query: { userId }, method} = req
