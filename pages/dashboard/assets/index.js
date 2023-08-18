@@ -1,32 +1,10 @@
-import { React, useState, useEffect } from "react"
+import { React } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { getAllAssetsForUser } from "@/apiBridge"
 import DashboardLayout from "@/components/layouts/DashboardLayout"
+import { readUserAssets } from "@/db/dbOperations"
 
-export default function Assets() {
-  const [assets, setAssets] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    async function loadAssets(userId){
-      setLoading(true)
-      try{
-        const { data } = await getAllAssetsForUser(userId)
-        setAssets(data)
-      } catch(error){
-        setError(error)
-      } finally {
-        setLoading(false)
-      }
-    }
-    // Hardcode userId for now
-    loadAssets(1)
-  }, [])
-
-  // get assets from miragejs server
-  // map and display them here
+export default function Assets({ assets }) {
   const assetElements = assets.map(asset => {
     return (
       <Link href={`/dashboard/assets/${asset._id}`} 
@@ -53,6 +31,17 @@ export default function Assets() {
       {assetElements}
     </div>
   )
+}
+
+export async function getServerSideProps(){
+  // Hardcode userId for now
+  const assets = await readUserAssets(1)
+
+  return {
+    props: {
+      assets: assets
+    }
+  }
 }
 
 Assets.getLayout = function getLayout(page){
