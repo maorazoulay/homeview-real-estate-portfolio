@@ -1,8 +1,12 @@
 import Asset from "./Asset"
 
 export async function readUserAssets(userId) {
-    const assets = await Asset.find({ userId: userId })
-    return JSON.parse(JSON.stringify(assets))
+    let assets = []
+    if(userId){
+        const dbResponse = await Asset.find({ userId: userId })
+        assets = JSON.parse(JSON.stringify(dbResponse))
+    }
+    return assets
 }
 
 export async function insertNewAsset(data) {
