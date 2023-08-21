@@ -3,8 +3,17 @@ import Image from "next/image"
 import Link from "next/link"
 import DashboardLayout from "@/components/layouts/DashboardLayout"
 import { readUserAssets } from "@/db/dbOperations"
+import { authOptions } from "@/pages/api/auth/[...nextauth]"
+import { getServerSession } from "next-auth/next"
+import { useSession } from "next-auth/react"
 
 export default function Assets({ assets }) {
+  const { data: session } = useSession()
+  console.log(session);
+  if(!session){
+    return <h1>Please sign in!</h1>
+  }
+
   const assetElements = assets.map(asset => {
     return (
       <Link href={`/dashboard/assets/${asset._id}`} 
@@ -33,13 +42,16 @@ export default function Assets({ assets }) {
   )
 }
 
-export async function getServerSideProps(){
-  // Hardcode userId for now
-  const assets = await readUserAssets(1)
+export async function getServerSideProps({req, res}){
+  const session = await getServerSession(req, res, authOptions)
+  
+  const userId = session?.user.id || ""
+  const assets = await readUserAssets(userId)
 
   return {
     props: {
-      assets: assets
+      assets: assets,
+      session: session
     }
   }
 }
