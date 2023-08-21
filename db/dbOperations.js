@@ -1,8 +1,12 @@
+import dbConnect from "./dbConnect"
 import Asset from "./Asset"
+import User from "./User"
+
 
 export async function readUserAssets(userId) {
     let assets = []
-    if(userId){
+    if (userId) {
+        await dbConnect()
         const dbResponse = await Asset.find({ userId: userId })
         assets = JSON.parse(JSON.stringify(dbResponse))
     }
@@ -32,4 +36,15 @@ export async function updateAsset(assetId, data) {
 export async function deleteAsset(assetId) {
     const asset = await Asset.deleteOne({ _id: assetId })
     return JSON.parse(JSON.stringify(asset))
+}
+
+export async function insertNewUser(data) {
+    const user = await User.insert(JSON.stringify(data))
+    return JSON.parse(JSON.stringify(user))
+}
+
+export async function getUserId(userEmail) {
+    await dbConnect()
+    const user = await User.findOne({ email: userEmail })
+    return JSON.parse(JSON.stringify(user))._id
 }
