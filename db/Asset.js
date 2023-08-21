@@ -2,7 +2,7 @@ import { Schema, model, models} from "mongoose"
 
 const assetSchema = new Schema({
     userId: {
-        type: Number,
+        type: String,
         required: true,
         immutable: true
     },
