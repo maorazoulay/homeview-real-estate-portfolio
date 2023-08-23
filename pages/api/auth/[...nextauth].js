@@ -1,4 +1,4 @@
-import { getUserId } from "@/db/dbOperations";
+import { getUserId, insertNewUser } from "@/db/dbOperations";
 import NextAuth from "next-auth"
 // import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
@@ -24,12 +24,22 @@ export const authOptions = {
       }
       return token
     },
-    async session({session, token}) {
+    async session({ session, token }) {
       // Send properties to the client, like a user id from the db.
       session.token = token
-      const dbUserId = await getUserId(session.user.email)
+      let dbUserId = await getUserId(session.user.email)
+      if (!dbUserId) {
+        // New user: Create a new user entry in the db 
+        try {
+          const newUser = insertNewUser(session.user)
+          dbUserId = newUser._id
+        } catch (error) {
+          console.error("Failed to create new user entry in db", error)
+          dbUserId = ""
+        }
+      }
       session.user.id = dbUserId
-      
+
       return session
     }
   }
