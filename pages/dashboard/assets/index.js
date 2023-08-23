@@ -14,6 +14,10 @@ export default function Assets({ assets }) {
     return <h1>Please sign in!</h1>
   }
 
+  if(!assets.length){
+    return <h1>No assets, please create one...</h1>
+  }
+
   const assetElements = assets.map(asset => {
     return (
       <Link href={`/dashboard/assets/${asset._id}`} 
@@ -44,7 +48,7 @@ export default function Assets({ assets }) {
 
 export async function getServerSideProps({req, res}){
   const session = await getServerSession(req, res, authOptions)
-  
+
   const userId = session?.user.id || ""
   const assets = await readUserAssets(userId)
 
