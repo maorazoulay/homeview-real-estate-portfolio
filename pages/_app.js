@@ -12,10 +12,10 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     </SessionProvider>)
 }
 
-// TODO: Authenticatation
-// TODO: Use Authenticatation to get userId
-// TODO: build page with asset view
-// TODO: build out API - WIP
+// TODO: API:
+  // TODO: make sure only the user can ask for their own assets only
+  // TODO: Add 'Create listing' endpoint
+// TODO: overview - connect numbers to assets
 
 // Tech Debt:
 // configure cache control headers for SSR, see: https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#caching
