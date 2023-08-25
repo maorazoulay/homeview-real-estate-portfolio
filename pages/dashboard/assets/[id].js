@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import DashboardLayout from '@/components/layouts/DashboardLayout'
+import DashboardLayout from '@/components/DashboardLayout'
  
 export default function Page() {
   const router = useRouter()

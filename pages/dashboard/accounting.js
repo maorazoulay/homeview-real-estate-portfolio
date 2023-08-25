@@ -1,4 +1,4 @@
-import DashboardLayout from "@/components/layouts/DashboardLayout"
+import DashboardLayout from "@/components/DashboardLayout"
 import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Accounting() {

@@ -1,7 +1,7 @@
 import { React } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import DashboardLayout from "@/components/layouts/DashboardLayout"
+import DashboardLayout from "@/components/DashboardLayout"
 import { readUserAssets } from "@/db/dbOperations"
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth/next"
