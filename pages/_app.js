@@ -13,7 +13,6 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
 }
 
 // TODO: API:
-  // TODO: make sure only the user can ask for their own assets only
   // TODO: Add 'Create listing' endpoint
 // TODO: overview - connect numbers to assets
 
