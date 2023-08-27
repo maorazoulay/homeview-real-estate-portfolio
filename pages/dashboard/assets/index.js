@@ -9,7 +9,7 @@ import { useSession } from "next-auth/react"
 
 export default function Assets({ assets }) {
   const { data: session } = useSession()
-  console.log(session);
+  
   if(!session){
     return <h1>Please sign in!</h1>
   }
