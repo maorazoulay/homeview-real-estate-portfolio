@@ -27,7 +27,13 @@ body {
 }
 
 .dashboard-container{
+  position: relative;
   /* border: 5px solid green; */
+}
+
+.topbar{
+  position: fixed;
+  top: 0px;
 }
 
 .sidebar{
@@ -40,21 +46,22 @@ body {
 
 main{
   position: relative;
-  margin-left: 15rem;
+  margin-left: 12rem;
 }
 .assets{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: auto;
-  gap: 2rem 6rem;
-  padding: 2rem 2.25rem;
-  /* height: auto; */
+  width: 100%;
+  margin-top: 3.5rem;
+  gap: 2rem 4rem;
+  padding: 1rem 1.25rem;
+  z-index: auto;
   /* border: 3px solid red;  */
 }
 .asset-item{
   flex: 0 0 25%;
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
   height: 25rem;
   display: flex;
   flex-direction: column;
