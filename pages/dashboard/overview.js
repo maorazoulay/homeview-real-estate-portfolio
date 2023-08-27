@@ -37,8 +37,8 @@ import {
     const valueFormatter = (number) => `$ ${Intl.NumberFormat("us").format(number).toString()}`;
   
     return (
-      <>
-        <Grid numItems={1} numItemsSm={2} numItemsLg={3} className="gap-2 p-6">
+      <div>
+        <Grid numItems={1} numItemsSm={2} numItemsLg={3} className="w-auto gap-2 p-6">
           <Col>
             <Card className="w-full">
               <Title>Assets Type Breakdown</Title>
@@ -88,9 +88,9 @@ import {
           </Col>
         </Grid>
         <div className="px-6">
-          <ValueChart />
+          <ValueChart className=''/>
         </div>
-      </>
+      </div>
     );
   } 
   

@@ -39,10 +39,10 @@ const dataFormatter = (number) => {
 
 export default function ValueChart() {
     return (
-      <Card>
+      <Card className="mt-6">
         <Title>Portfolio value over time (USD)</Title>
         <AreaChart
-          className="h-72 mt-4"
+          className="h-96 mt-7"
           data={chartdata}
           index="date"
           categories={["Assets Value", "Equity Value"]}

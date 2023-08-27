@@ -47,6 +47,9 @@ body {
 main{
   position: relative;
   margin-left: 12rem;
+  /* border: 3px solid red; */
+  width: 100%;
+  height: 100%;
 }
 .assets{
   display: flex;
@@ -57,7 +60,6 @@ main{
   gap: 2rem 4rem;
   padding: 1rem 1.25rem;
   z-index: auto;
-  /* border: 3px solid red;  */
 }
 .asset-item{
   flex: 0 0 25%;
