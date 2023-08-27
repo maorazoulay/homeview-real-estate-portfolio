@@ -118,7 +118,7 @@ main{
 .hvr-grow:focus,
 .hvr-grow:active {
   box-shadow: 0 0 10px #5b4def;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .hvr-underline-from-right {
