@@ -14,9 +14,8 @@ export default function SidebarNew() {
             key={option.displayName.toLowerCase()}
             href={option.link.href}
             onClick={() => setSelectedOption(option.refName)}
-            className={option.link.class.concat(
-                isSelectedOption(option.displayName.toLowerCase()) ?
-                    ' bg-indigo-700' : '')}
+            className={isSelectedOption(option.displayName.toLowerCase()) ?
+                option.classesFunc(option.link.class) : option.link.class}
         >
             <svg
                 className={option.svg.class}
@@ -31,13 +30,11 @@ export default function SidebarNew() {
                     strokeWidth={option.path.strokeWidth}></path>
             </svg>
             <span className={option.span.class}>{option.displayName}</span>
-        </Link>
+        </Link >
     )
 
     const logoElement = navbarElements.shift()
     const bottomElement = navbarElements.pop()
-
-    console.log(navbarElements);
 
     return (
         <div className="fixed flex flex-col items-center w-48 h-screen overflow-hidden text-indigo-300 bg-indigo-900 rounded">
