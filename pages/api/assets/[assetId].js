@@ -7,12 +7,12 @@ import { UNAUTHORIZED } from "@/server/serverUtils"
 export default async function handler(req, res) {
   const session = await getServerSession(req, res, authOptions)
 
-  if(!session) {
+  if (!session) {
     return res.status(UNAUTHORIZED.status)
-    .json({success: false, error: UNAUTHORIZED.error})
+      .json({ success: false, error: UNAUTHORIZED.error })
   }
 
-  const {query: { assetId }, method} = req
+  const { query: { assetId }, method } = req
 
   await dbConnect()
 
@@ -26,6 +26,8 @@ export default async function handler(req, res) {
         res.status(200).json({ success: true, data: asset })
       } catch (error) {
         res.status(400).json({ success: false })
+        console.error('error:', error)
+
       }
       break
 
@@ -38,6 +40,8 @@ export default async function handler(req, res) {
         res.status(200).json({ success: true, data: asset })
       } catch (error) {
         res.status(400).json({ success: false })
+        console.error('error:', error)
+
       }
       break
 
@@ -47,9 +51,11 @@ export default async function handler(req, res) {
         if (!deletedAsset) {
           return res.status(400).json({ success: false })
         }
-        res.status(200).json({ success: true, data: {deletedAsset} })
+        res.status(200).json({ success: true, data: { deletedAsset } })
       } catch (error) {
         res.status(400).json({ success: false })
+        console.error('error:', error)
+
       }
       break
 
