@@ -21,15 +21,19 @@ export default async function handler(req, res) {
                 res.status(200).json({ success: true, data: assets })
             } catch (error) {
                 res.status(400).json({ success: false })
+                console.error('error:', error)
             }
             break
         case 'POST':
             try {
-                const asset = await insertNewAsset(req.body)
-                console.log("Asset: ", asset);
+                const data = JSON.parse(req.body)
+                data.userId = userId
+                
+                const asset = await insertNewAsset(data)
                 res.status(201).json({ success: true, data: asset })
             } catch (error) {
                 res.status(400).json({ success: false })
+                console.error('error:', error)
             }
             break
         default:
