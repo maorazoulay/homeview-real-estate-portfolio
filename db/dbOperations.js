@@ -15,8 +15,17 @@ export async function readUserAssets(userId) {
 
 export async function insertNewAsset(data) {
     await dbConnect()
-    const asset = await Asset.insert(JSON.stringify(data))
-    return JSON.parse(JSON.stringify(asset))
+    const asset = await Asset.create({
+        userId: data.userId,
+        title: data.title,
+        address: data.address,
+        propertyType: data.propertyType,
+        images: data.images,
+        purchasePrice: data.purchasePrice,
+        purchaseDate: data.purchaseDate,
+        marketValue: data.marketValue
+    })
+    return JSON.parse(JSON.stringify(await asset.save()))
 }
 
 export async function findAssetById(assetId) {
