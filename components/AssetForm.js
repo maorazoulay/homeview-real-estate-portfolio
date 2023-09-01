@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { insertNewAsset } from "@/db/dbOperations";
+
 import {
     Card,
     Input,
@@ -13,17 +13,16 @@ export default function AssetForm() {
     function updateForm(event) {
         const name = event.target.name;
         const value = event.target.value;
-        setFormData(values => ({...values, [name]: value}))
+        setFormData(values => ({ ...values, [name]: value }))
     }
 
-    function addNewAsset() {
-        // fetch userId from session
-        const data = {
-            ...formData,
-            userId: '64e65430f9b360493df60d95' 
-        }
-        // const newAsset = insertNewAsset(data)
-        // console.log(newAsset);
+    async function addNewAsset() {
+        const response = await fetch('/api/assets', {
+            method: 'POST',
+            body: JSON.stringify(formData),
+        })
+
+        console.log('New asset inserted', await response.json().data);
     }
 
     return (
@@ -43,7 +42,7 @@ export default function AssetForm() {
                         <Input type="number" name="purchasePrice" value={formData.purchasePrice} onChange={updateForm} size="lg" placeholder="Purchase Price" />
                         <Input type="date" name="purchaseDate" value={formData.purchaseDate || Date.now} onChange={updateForm} size="lg" placeholder="Purchase Date" />
                         <Input type="number" name="marketValue" value={formData.marketValue} onChange={updateForm} size="lg" placeholder="Market Value" />
-                        <Input type="file" name="images" value={formData.images || []} onChange={updateForm}  multiple="multiple" size="lg" placeholder="images" />
+                        <Input type="file" name="images" value={formData.images || []} onChange={updateForm} multiple="multiple" size="lg" placeholder="images" />
                     </div>
 
                 </Typography>
