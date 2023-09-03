@@ -111,6 +111,12 @@ input[type="date"]:valid:before {
   content: "";
 }
 
+.absolute-top-right{
+  position: absolute;
+  top: 15%;
+  right: 38%;
+}
+
 /*====================== Animations ====================== */
 
 /* Grow */
