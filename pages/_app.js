@@ -13,10 +13,8 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
 }
 
 // TODO: Add Asset for:
-  // TODO: Change layout - use generic form with a submit input
-  // TODO: Don't use a state - just handle the onSubmit
-  // TODO: Host the images and get the paths
-  // TODO: Append the userId and image paths
+  // TODO: validate image type
+  // TODO: Host the images and appent the paths
 // TODO: overview - connect numbers to assets
 
 // Tech Debt:
