@@ -1,19 +1,19 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
 import { insertNewAsset, readUserAssets } from '@/db/dbOperations'
-import { UNAUTHORIZED } from '@/server/serverUtils'
+import { UNAUTHORIZED, parseFormData } from '@/server/serverUtils'
 
 export default async function handler(req, res) {
     const session = await getServerSession(req, res, authOptions)
 
-    if(!session) {
-      return res.status(UNAUTHORIZED.status)
-      .json({success: false, error: UNAUTHORIZED.error})
+    if (!session) {
+        return res.status(UNAUTHORIZED.status)
+            .json({ success: false, error: UNAUTHORIZED.error })
     }
-    
+
     const method = req.method
     const userId = session.user.id || ""
-    
+
     switch (method) {
         case 'GET':
             try {
@@ -26,10 +26,9 @@ export default async function handler(req, res) {
             break
         case 'POST':
             try {
-                const data = JSON.parse(req.body)
+                let data = JSON.parse(req.body)
                 data.userId = userId
-                
-                const asset = await insertNewAsset(data)
+                const asset = insertNewAsset(data)
                 res.status(201).json({ success: true, data: asset })
             } catch (error) {
                 res.status(400).json({ success: false })
