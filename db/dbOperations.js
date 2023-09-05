@@ -20,10 +20,10 @@ export async function insertNewAsset(data) {
         title: data.title,
         address: data.address,
         propertyType: data.propertyType,
-        images: data.images,
         purchasePrice: data.purchasePrice,
         purchaseDate: data.purchaseDate,
-        marketValue: data.marketValue
+        marketValue: data.marketValue,
+        images: data.images
     })
     return JSON.parse(JSON.stringify(await asset.save()))
 }
