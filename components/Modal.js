@@ -18,7 +18,7 @@ export default function Modal() {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <AssetForm />
             <button
-              class="absolute-top-right hvr-grow w-10 h-10 grow-0 shrink-0 text-indigo-700 border-2 border-indigo-700 rounded-full outline-none"
+              className="absolute-top-right hvr-grow w-10 h-10 grow-0 shrink-0 text-indigo-700 border-2 border-indigo-700 rounded-full outline-none"
               onClick={() => setShowModal(false)}
             > X
             </button>
