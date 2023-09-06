@@ -41,17 +41,17 @@ export default function AssetForm() {
             imageUrls.push(url)
         }
 
-        // update formData with imageUrls and fix numbers format
-        setFormData((prevFormData) => ({
-            ...prevFormData,
+        // Get final data with imageUrls and fixed numbers format
+        let finalData = {
+            ...formData,
             images: imageUrls,
-            purchaseDate: extractPriceValue(prevFormData.purchasePrice),
-            marketValue: extractPriceValue(prevFormData.marketValue)
-        }))
+            purchasePrice: extractPriceValue(formData.purchasePrice),
+            marketValue: extractPriceValue(formData.marketValue)
+        }
 
         const response = await fetch('/api/assets', {
             method: 'POST',
-            body: JSON.stringify(formData)
+            body: JSON.stringify(finalData)
         })
 
         // disable button, Reset the form and give feedback to user that an asset was added
@@ -63,7 +63,7 @@ export default function AssetForm() {
     if (shouldDisable !== disabledSubmit) {
         setDisabledSubmit(shouldDisable)
     }
-    console.log(formData);
+    // console.log('$1,222,222'.replace('$', '').replaceAll(',', ''));
 
     return (
         <div className="relative min-h-screen bg-transparent py-6 flex flex-col justify-center sm:py-12">
@@ -91,9 +91,10 @@ export default function AssetForm() {
                                         <label>
                                             <select id="propertyType" autoComplete="off" name="propertyType" value={formData.propertyType} onChange={handleChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600">
                                                 <option value={""}>Select Property Type:</option>
-                                                <option value={"Option 1"}>Option 1</option>
-                                                <option value={"Option 2"}>Option 2</option>
-                                                <option value={"Option 3"}>Option 3</option>
+                                                <option value={"Single-Family"}>Single-Family</option>
+                                                <option value={"Condominium"}>Condominium</option>
+                                                <option value={"Townhouse"}>Townhouse</option>
+                                                <option value={"Multi-Family"}>Multi-Family</option>
                                             </select>
                                         </label>
                                     </div>
