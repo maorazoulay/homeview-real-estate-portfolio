@@ -28,7 +28,7 @@ export default async function handler(req, res) {
             try {
                 let data = JSON.parse(req.body)
                 data.userId = userId
-                const asset = insertNewAsset(data)
+                const asset = await insertNewAsset(data)
                 res.status(201).json({ success: true, data: asset })
             } catch (error) {
                 res.status(400).json({ success: false })
