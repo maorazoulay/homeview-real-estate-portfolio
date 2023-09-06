@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
 import { insertNewAsset, readUserAssets } from '@/db/dbOperations'
-import { UNAUTHORIZED, parseFormData } from '@/server/serverUtils'
+import { UNAUTHORIZED } from '@/utils/serverUtils'
 
 export default async function handler(req, res) {
     const session = await getServerSession(req, res, authOptions)
