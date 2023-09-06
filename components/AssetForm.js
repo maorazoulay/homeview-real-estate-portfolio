@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useS3Upload } from "next-s3-upload";
+import { extractPriceValue, getClassesForSubmitButton, limitNumberCharacters } from "@/utils/formUtils";
 
 export default function AssetForm() {
     const [formData, setFormData] = useState({
@@ -11,7 +12,6 @@ export default function AssetForm() {
         marketValue: "",
         images: ""
     })
-    // const [uploadedImages, setUploadedImages] = useState([])
     const [loading, setLoading] = useState(false)
     const [disabledSubmit, setDisabledSubmit] = useState(true)
     const { uploadToS3 } = useS3Upload();
@@ -40,7 +40,14 @@ export default function AssetForm() {
 
             imageUrls.push(url)
         }
-        setFormData((prevFormData) => ({ ...prevFormData, images: imageUrls }))
+
+        // update formData with imageUrls and fix numbers format
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            images: imageUrls,
+            purchaseDate: extractPriceValue(prevFormData.purchasePrice),
+            marketValue: extractPriceValue(prevFormData.marketValue)
+        }))
 
         const response = await fetch('/api/assets', {
             method: 'POST',
@@ -48,21 +55,15 @@ export default function AssetForm() {
         })
 
         // disable button, Reset the form and give feedback to user that an asset was added
-
         console.log('New asset inserted', await response.json().data);
-    }
-
-    function getClassesForSubmitButton() {
-        const baseClasses = 'text-white w-full mt-2 rounded-md px-2 py-1 '
-        return disabledSubmit ? baseClasses.concat('bg-indigo-300')
-            : baseClasses.concat('bg-indigo-500 hvr-grow')
     }
 
     // enable submit button when all values are provided
     const shouldDisable = !Object.values(formData).every(item => item)
-    if(shouldDisable !== disabledSubmit){
+    if (shouldDisable !== disabledSubmit) {
         setDisabledSubmit(shouldDisable)
     }
+    console.log(formData);
 
     return (
         <div className="relative min-h-screen bg-transparent py-6 flex flex-col justify-center sm:py-12">
@@ -83,7 +84,7 @@ export default function AssetForm() {
                                         <label htmlFor="title" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Property Title</label>
                                     </div>
                                     <div className="relative">
-                                        <input type="text" id="address" autoComplete="off" name="address" value={formData.address} onChange={handleChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Address" maxLength={60}/>
+                                        <input type="text" id="address" autoComplete="off" name="address" value={formData.address} onChange={handleChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Address" maxLength={60} />
                                         <label htmlFor="address" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Address</label>
                                     </div>
                                     <div className="relative">
@@ -101,19 +102,19 @@ export default function AssetForm() {
                                         <label htmlFor="purchaseDate" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Purchase Date</label>
                                     </div>
                                     <div className="relative">
-                                        <input type="number" id="purchasePrice" autoComplete="off" name="purchasePrice" value={formData.purchasePrice} onChange={handleChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Purchase Price" maxLength={8}/>
-                                        <label htmlFor="purchasePrice" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Purchase Price in $</label>
+                                        <input type="text" id="purchasePrice" autoComplete="off" name="purchasePrice" value={formData.purchasePrice} onChange={handleChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Purchase Price" onInput={limitNumberCharacters} />
+                                        <label htmlFor="purchasePrice" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Purchase Price</label>
                                     </div>
                                     <div className="relative">
-                                        <input type="number" id="marketValue" autoComplete="off" name="marketValue" value={formData.marketValue} onChange={handleChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Market Value" maxLength={8}/>
-                                        <label htmlFor="marketValue" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Market Value in $</label>
+                                        <input type="text" id="marketValue" autoComplete="off" name="marketValue" value={formData.marketValue} onChange={handleChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Market Value" onInput={limitNumberCharacters} />
+                                        <label htmlFor="marketValue" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Market Value</label>
                                     </div>
                                     <div className="relative">
                                         <input type="file" multiple accept="image/*" id="images" autoComplete="off" name="images" onChange={handleImageChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" />
                                         <label htmlFor="images" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Images</label>
                                     </div>
                                     <div className="relative">
-                                        <button type="submit" className={getClassesForSubmitButton()} disabled={disabledSubmit}>{loading ? "Adding Asset..." : "Submit"}</button>
+                                        <button type="submit" className={getClassesForSubmitButton(disabledSubmit)} disabled={disabledSubmit}>{loading ? "Adding Asset..." : "Submit"}</button>
                                     </div>
                                 </div>
                             </div>
