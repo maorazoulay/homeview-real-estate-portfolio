@@ -1,5 +1,5 @@
 export function extractPriceValue(usPriceString) {
-    return Number(usPriceString.replace('$', '').replace(',', ''))
+    return Number(usPriceString.replace('$', '').replaceAll(',', ''))
 }
 
 export function getClassesForSubmitButton(disabledSubmit) {
