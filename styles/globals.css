@@ -24,32 +24,16 @@ body {
   margin: 0;
   height: auto;
 }
-
-.dashboard-container{
-  position: relative;
-}
-
-.topbar{
-  position: fixed;
-  top: 0px;
-}
-.asset-item{
+.asset-link{
   flex: 0 0 25%;
-  height: 25rem;
+  height: 24rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0 0 5px #6d60fb;
-}
-
-.asset-info{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  cursor: pointer;
   text-align: center;
-  gap: 0.5rem;
-  padding: 0.7rem;
-  font-weight: 700;
+  border-radius: 0.75rem;
 }
 
 .sidebar-option:hover,
