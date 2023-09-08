@@ -22,16 +22,17 @@ export default function Assets({ assets }) {
     const assetElements = assets.map(asset => {
         return (
             <Link href={`/dashboard/assets/${asset._id}`}
-                className="cursor-pointer hvr-grow asset-item gap-2" key={asset._id}>
-                <Image
-                    src={asset.images[0]}
-                    alt="property image"
-                    // fill
-                    width={410}
-                    height={400}
-                    priority
-                />
-                <div className="asset-info">
+                className="asset-link hvr-grow sm:max-w-sm max-w-md" key={asset._id}>
+                <div className="relative w-full h-2/3">
+                    <Image
+                        src={asset.images[0]}
+                        alt="property image"
+                        fill
+                        priority
+                        className="rounded-xl"
+                    />
+                </div>
+                <div className="w-full h-1/3 asset-info flex flex-col justify-center items-center gap-2 pt-8 pb-8 font-bold">
                     <p>{asset.title}</p>
                     <p>{asset.address}</p>
                     <p>{asset.propertyType}</p>
@@ -43,7 +44,7 @@ export default function Assets({ assets }) {
     return (
         <>
             <Topbar />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:pl-8 sm:pr-8 pt-20 gap-8 p-7">
+            <div className="place-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:pl-8 sm:pr-8 pt-20 gap-x-14 gap-y-10 p-7">
                 {assetElements}
             </div>
         </>
