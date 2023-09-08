@@ -37,7 +37,7 @@ export default function SidebarNew() {
     const bottomElement = navbarElements.pop()
 
     return (
-        <div className="fixed flex flex-col items-center w-48 h-screen overflow-hidden text-indigo-300 bg-indigo-900 rounded">
+        <div className="sticky top-0 left-0 flex flex-col items-center w-40 md:w-48 h-screen overflow-hidden text-indigo-300 bg-indigo-900 rounded">
             {logoElement}
             <div className="w-full px-2">
                 <div className="flex flex-col items-center w-full mt-3 border-t border-gray-700">

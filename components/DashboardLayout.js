@@ -5,7 +5,7 @@ function DashboardLayout({ children }){
     return (
         <div className="flex">
             <Sidebar />
-            <main>
+            <main className='w-full'>
                 {children}
             </main>
         </div>
