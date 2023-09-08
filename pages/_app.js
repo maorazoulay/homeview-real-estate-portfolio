@@ -12,7 +12,6 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     </SessionProvider>)
 }
 
-// TODO: fix sidebar responsiveness
 // TODO: Fix Image dimensions in assets page - contain the image in a div and use fill
 // TODO: overview - connect numbers to assets
 // TODO: Create Asset page with update and delete functionality
