@@ -34,14 +34,6 @@ body {
   top: 0px;
 }
 
-.sidebar{
-  position: fixed;
-  width: 15rem;
-  background-color: #6d60fb;
-  height: 100vh;
-  padding: 1rem;
-}
-
 main{
   position: relative;
   margin-left: 12rem;
