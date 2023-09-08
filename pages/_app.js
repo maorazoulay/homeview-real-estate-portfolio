@@ -12,13 +12,14 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     </SessionProvider>)
 }
 
-// TODO: Add Asset for:
-  // TODO: validate image type
-  // TODO: Host the images and appent the paths
+// TODO: fix sidebar responsiveness
+// TODO: Fix Image dimensions in assets page - contain the image in a div and use fill
 // TODO: overview - connect numbers to assets
-
-// Tech Debt:
+// TODO: Create Asset page with update and delete functionality
+// TODO: Add more NextAuh providers
+// TODO: Style Log In page
+// TODO: Style Account tab in sidebar
+// TODO: Fix currently selected tab in sidebar
+// TODO: Fix Topbar - Add filters?
 // configure cache control headers for SSR, see: https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#caching
-// Fix assets layout when there is less than 3 items in one row
-// Fix Image dimensions in assets page - contain the image in a div and use fill
 // Add the env variable NEXTAUTH_URL='cannonical URL' in production? - env vars in Vercel Dashboard
