@@ -5,7 +5,7 @@ import MiniModal from "./MiniModal";
 import { useRouter } from 'next/router'
 
 
-export default function AssetForm() {
+export default function AssetForm({ onClose }) {
     const [formData, setFormData] = useState({
         title: "",
         address: "",
@@ -25,7 +25,7 @@ export default function AssetForm() {
 
 
     useEffect(() => {
-        if(finish){
+        if (finish) {
             router.reload()
         }
     }, [finish, router])
@@ -84,12 +84,12 @@ export default function AssetForm() {
             method: 'POST',
             body: JSON.stringify(finalData)
         }).then(respone => respone.json())
-        .then(data => {
-            console.log('new asset was created', data);
-            setLoading(false)
-            setShowConfirmation(true)
-            setFinish(true)
-        })
+            .then(data => {
+                console.log('new asset was created', data);
+                setLoading(false)
+                setShowConfirmation(true)
+                setFinish(true)
+            })
     }
 
     // enable submit button when all values are provided
@@ -107,6 +107,10 @@ export default function AssetForm() {
                             className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-indigo-700 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
                         </div>
                         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+                            <button
+                                className="absolute top-7 right-7 hvr-grow w-10 h-10 grow-0 shrink-0 text-indigo-700 border-2 border-indigo-700 rounded-full outline-none"
+                                onClick={onClose}> X
+                            </button>
                             <div className="max-w-md mx-auto">
                                 <div>
                                     <h1 className="text-2xl font-semibold">Add New Asset</h1>

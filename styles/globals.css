@@ -107,12 +107,6 @@ input[type="date"]:valid:before {
   content: "";
 }
 
-.absolute-top-right{
-  position: absolute;
-  top: 15%;
-  right: 38%;
-}
-
 .required:after {
   content:" *";
   color: red;
@@ -125,7 +119,7 @@ input[type=file]::file-selector-button {
   /* border-right: 1px solid #e5e5e5; */
   padding: 0.625em 0.93em;
   margin-right: 1.25em;
-  /* transition: 0.3s; */
+  transition: 0.2s;
   border-radius: 50%;
 }
 
