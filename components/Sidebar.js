@@ -1,20 +1,34 @@
 import Link from "next/link"
 import { useState } from 'react'
 import { navbar } from "@/styles/navbarData";
+import { useRouter } from "next/router";
 
 export default function Sidebar() {
-    const [selectedOption, setSelectedOption] = useState('overview');
+    const [selectedOption, setSelectedOption] = useState('');
+    const router = useRouter()
 
     function isSelectedOption(option) {
-        return option === selectedOption
+        return option.displayName.toLowerCase() === selectedOption
     }
+
+    // The following is much faster than using a useEffect, 
+    // but will it cause issues down the line?
+    const currentPath = router.pathname
+    const resource = currentPath.split('/dashboard/')[1]
+    if (resource !== selectedOption) {
+        setSelectedOption(resource)
+    }
+    // useEffect(() => {
+    // }, [router])
+
+
 
     const navbarElements = navbar.map(option =>
         <Link
             key={option.displayName.toLowerCase()}
             href={option.link.href}
-            onClick={() => setSelectedOption(option.refName)}
-            className={isSelectedOption(option.displayName.toLowerCase()) ?
+            // onClick={() => setSelectedOption(option.refName)}
+            className={isSelectedOption(option) ?
                 option.classesFunc(option.link.class) : option.link.class}
         >
             <svg
