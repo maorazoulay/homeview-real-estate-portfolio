@@ -12,12 +12,11 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     </SessionProvider>)
 }
 
-// TODO: overview - Asset images - add divider between images and text
-// TODO: Create Asset page with update and delete functionality
-// TODO: NextAuh - redirect to sign in page when not logged in
 // TODO: Add more NextAuh providers
 // TODO: Style Log In page
+// TODO: NextAuh - redirect to sign in page when not logged in
 // TODO: Style Account tab in sidebar
+// TODO: Create Asset page with update and delete functionality
 // TODO: Fix Topbar - Add filters?
 // configure cache control headers for SSR, see: https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#caching
 // Add the env variable NEXTAUTH_URL='cannonical URL' in production? - env vars in Vercel Dashboard
