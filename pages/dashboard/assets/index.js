@@ -29,7 +29,7 @@ export default function Assets({ assets }) {
                         alt="property image"
                         fill
                         priority
-                        className="rounded-xl"
+                        className="rounded-xl border-b-indigo-950 border-b-2"
                     />
                 </div>
                 <div className="w-full h-1/3 asset-info flex flex-col justify-center items-center gap-2 pt-8 pb-8 font-bold">
