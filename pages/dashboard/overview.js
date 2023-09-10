@@ -11,7 +11,6 @@ import {
 import ValueChart from "@/components/ValueChart";
 
 export default function Overview({ data }) {
-  console.log(data);
   const { data: session } = useSession()
 
   if (!session) {
@@ -22,14 +21,12 @@ export default function Overview({ data }) {
   //     return <h1>No assets, please create one...</h1>
   // }
 
-
   const colors = ["slate", "violet", "indigo", "rose", "cyan", "amber"]
   const legendCategories = data.map(asset => asset.name)
 
   const breakdownFormatter = (number) => `${number.toString()} Assets`;
   const valueFormatter = (number) => `$ ${Intl.NumberFormat("us").format(number).toString()}`;
   const totalPortfolioValue = data.reduce((accumulator, propertyType) => accumulator + propertyType.value, 0)
-
 
   return (
     <div>
