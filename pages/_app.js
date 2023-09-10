@@ -12,8 +12,9 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     </SessionProvider>)
 }
 
-// TODO: overview - connect numbers to assets
+// TODO: overview - Asset images - add divider between images and text
 // TODO: Create Asset page with update and delete functionality
+// TODO: NextAuh - redirect to sign in page when not logged in
 // TODO: Add more NextAuh providers
 // TODO: Style Log In page
 // TODO: Style Account tab in sidebar
