@@ -2,7 +2,7 @@ import Link from "next/link"
 import { useState } from 'react'
 import { navbar } from "@/styles/navbarData";
 
-export default function SidebarNew() {
+export default function Sidebar() {
     const [selectedOption, setSelectedOption] = useState('overview');
 
     function isSelectedOption(option) {
