@@ -2,8 +2,6 @@ import DashboardLayout from "@/components/DashboardLayout";
 import { readUserAssets } from "@/db/dbOperations"
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth/next"
-import { useSession } from "next-auth/react"
-
 import {
   Grid, Col, Card, Text, Metric,
   Flex, BadgeDelta, Title, DonutChart, Legend
@@ -11,12 +9,6 @@ import {
 import ValueChart from "@/components/ValueChart";
 
 export default function Overview({ data }) {
-  const { data: session } = useSession()
-
-  if (!session) {
-    return <h1>Please sign in!</h1>
-  }
-
   // if (!data.length) {
   //     return <h1>No assets, please create one...</h1>
   // }
@@ -80,7 +72,7 @@ export default function Overview({ data }) {
         </Col>
       </Grid>
       <div className="px-6">
-        <ValueChart/>
+        <ValueChart />
       </div>
     </div>
   );
@@ -88,6 +80,10 @@ export default function Overview({ data }) {
 
 export async function getServerSideProps({ req, res }) {
   const session = await getServerSession(req, res, authOptions)
+
+  if (!session) {
+    return { redirect: { destination: "/auth/signin" } };
+  }
 
   const userId = session?.user.id || ""
   const assets = await readUserAssets(userId)

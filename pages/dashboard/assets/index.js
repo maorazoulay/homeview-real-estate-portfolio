@@ -5,16 +5,9 @@ import DashboardLayout from "@/components/DashboardLayout"
 import { readUserAssets } from "@/db/dbOperations"
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth/next"
-import { useSession } from "next-auth/react"
 import Topbar from "@/components/Topbar"
 
 export default function Assets({ assets }) {
-    const { data: session } = useSession()
-
-    if (!session) {
-        return <h1>Please sign in!</h1>
-    }
-
     if (!assets.length) {
         return <h1>No assets, please create one...</h1>
     }
@@ -53,6 +46,10 @@ export default function Assets({ assets }) {
 
 export async function getServerSideProps({ req, res }) {
     const session = await getServerSession(req, res, authOptions)
+
+    if (!session) {
+        return { redirect: { destination: "/auth/signin" } };
+    }
 
     const userId = session?.user.id || ""
     const assets = await readUserAssets(userId)
