@@ -18,8 +18,6 @@ export default function Sidebar() {
     if (resource !== selectedOption) {
         setSelectedOption(resource)
     }
-    // useEffect(() => {
-    // }, [router])
 
 
 
@@ -27,7 +25,6 @@ export default function Sidebar() {
         <Link
             key={option.displayName.toLowerCase()}
             href={option.link.href}
-            // onClick={() => setSelectedOption(option.refName)}
             className={isSelectedOption(option) ?
                 option.classesFunc(option.link.class) : option.link.class}
         >
