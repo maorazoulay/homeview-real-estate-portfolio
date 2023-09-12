@@ -32,7 +32,7 @@ export default function Sidebar() {
         >
             {option.refName === 'account' && userImage ?
                 (<>
-                    <Avatar src={userImage} alt="avatar" size="sm" className="rounded-full"/>
+                    <Avatar src={userImage} alt="avatar" size="sm" className="rounded-full" referrerPolicy="no-referrer"/>
                 </>) : (
                     <svg
                         className={option.svg.class}
