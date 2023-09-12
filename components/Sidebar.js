@@ -2,10 +2,14 @@ import Link from "next/link"
 import { useState } from 'react'
 import { navbar } from "@/styles/navbarData";
 import { useRouter } from "next/router";
+import { Avatar } from "@material-tailwind/react";
+import { useSession } from "next-auth/react";
 
 export default function Sidebar() {
     const [selectedOption, setSelectedOption] = useState('');
     const router = useRouter()
+    const session = useSession()
+    const userImage = session.data.user.image
 
     function isSelectedOption(option) {
         return option.displayName.toLowerCase() === selectedOption
@@ -19,8 +23,6 @@ export default function Sidebar() {
         setSelectedOption(resource)
     }
 
-
-
     const navbarElements = navbar.map(option =>
         <Link
             key={option.displayName.toLowerCase()}
@@ -28,18 +30,23 @@ export default function Sidebar() {
             className={isSelectedOption(option) ?
                 option.classesFunc(option.link.class) : option.link.class}
         >
-            <svg
-                className={option.svg.class}
-                xmlns={option.svg.class}
-                viewBox={option.svg.viewBox}
-                fill={option.svg.fill}
-                stroke={option.svg.stroke}>
-                <path
-                    d={option.path.d}
-                    strokeLinecap={option.path.strokeLinecap}
-                    strokeLinejoin={option.path.strokeLinejoin}
-                    strokeWidth={option.path.strokeWidth}></path>
-            </svg>
+            {option.refName === 'account' && userImage ?
+                (<>
+                    <Avatar src={userImage} alt="avatar" size="sm" className="rounded-full"/>
+                </>) : (
+                    <svg
+                        className={option.svg.class}
+                        xmlns={option.svg.class}
+                        viewBox={option.svg.viewBox}
+                        fill={option.svg.fill}
+                        stroke={option.svg.stroke}>
+                        <path
+                            d={option.path.d}
+                            strokeLinecap={option.path.strokeLinecap}
+                            strokeLinejoin={option.path.strokeLinejoin}
+                            strokeWidth={option.path.strokeWidth}></path>
+                    </svg>
+                )}
             <span className={option.span.class}>{option.displayName}</span>
         </Link >
     )
