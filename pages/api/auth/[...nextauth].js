@@ -19,6 +19,11 @@ export const authOptions = {
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET
     })
   ],
+  pages: {
+    signIn: '/auth/signin',
+    signOut: '/auth/signout',
+    error: '/auth/error', // Error code passed in query string as ?error=
+  },
   callbacks: {
     async jwt({ token, account, profile }) {
       // Persist the OAuth access_token and or the user id to the token right after signin

@@ -12,8 +12,6 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     </SessionProvider>)
 }
 
-// TODO: Add more NextAuh providers
-// TODO: Style Log In page
 // TODO: NextAuh - redirect to sign in page when not logged in
 // TODO: Style Account tab in sidebar
 // TODO: Create Asset page with update and delete functionality
