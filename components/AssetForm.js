@@ -17,7 +17,6 @@ export default function AssetForm({ onClose }) {
     const [loading, setLoading] = useState(false)
     const [imageKey, setImageKey] = useState("")
     const [disabledSubmit, setDisabledSubmit] = useState(true)
-    const [showConfirmation, setShowConfirmation] = useState(false)
     const [finish, setFinish] = useState(false)
     const { uploadToS3 } = useS3Upload();
     const router = useRouter()
@@ -86,7 +85,6 @@ export default function AssetForm({ onClose }) {
             .then(data => {
                 console.log('new asset was created', data);
                 setLoading(false)
-                setShowConfirmation(true)
                 setFinish(true)
             })
     }
