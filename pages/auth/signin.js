@@ -4,7 +4,6 @@ import { authOptions } from "../api/auth/[...nextauth]";
 import SignInSkeleton from "@/components/SignInSkeleton";
 
 export default function SignIn({ providers }) {
-  console.log(providers);
   return (
     <>
       <SignInSkeleton signIn={signIn} />
