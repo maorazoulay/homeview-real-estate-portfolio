@@ -12,7 +12,7 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     </SessionProvider>)
 }
 
-// TODO: Style Account tab and page
+// TODO: Add indication of no assets in assets page
 // TODO: Create Asset page with update and delete functionality
 // TODO: Fix Topbar - Add filters?
 // TODO: Fix responsiveness of Overview page
