@@ -9,10 +9,6 @@ import {
 import ValueChart from "@/components/ValueChart";
 
 export default function Overview({ data }) {
-  // if (!data.length) {
-  //     return <h1>No assets, please create one...</h1>
-  // }
-
   const colors = ["slate", "violet", "indigo", "rose", "cyan", "amber"]
   const legendCategories = data.map(asset => asset.name)
 
