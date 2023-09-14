@@ -8,10 +8,6 @@ import { getServerSession } from "next-auth/next"
 import Topbar from "@/components/Topbar"
 
 export default function Assets({ assets }) {
-    if (!assets.length) {
-        return <h1>No assets, please create one...</h1>
-    }
-
     const assetElements = assets.map(asset => {
         return (
             <Link href={`/dashboard/assets/${asset._id}`}
@@ -37,9 +33,12 @@ export default function Assets({ assets }) {
     return (
         <>
             <Topbar />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-7 sm:pl-16 sm:pr-8 pt-20 gap-x-8 gap-y-11">
-                {assetElements}
-            </div>
+            {!assets.length ?
+                (<h1 className="absolute top-1/3 left-1/2 text-2xl font-bold text-indigo-500">No assets, please Add one...</h1>) :
+                (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-7 sm:pl-16 sm:pr-8 pt-20 gap-x-8 gap-y-11">
+                    {assetElements}
+                </div>)
+            }
         </>
     )
 }
