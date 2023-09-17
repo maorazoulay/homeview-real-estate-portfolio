@@ -17,10 +17,10 @@ export default function Overview({ data }) {
   const totalPortfolioValue = data.reduce((accumulator, propertyType) => accumulator + propertyType.value, 0)
 
   return (
-    <div>
-      <Grid numItems={1} numItemsSm={2} numItemsLg={3} className="w-auto gap-2 p-6">
+    <div className="p-0 sm:p-6">
+      <Grid numItems={1} numItemsSm={2} numItemsLg={3} className="sm:w-auto gap-2">
         <Col>
-          <Card className="w-full">
+          <Card className="w-60 sm:w-full h-full">
             <Title>Assets Type Breakdown</Title>
             <DonutChart
               className="mt-6"
@@ -37,20 +37,20 @@ export default function Overview({ data }) {
           </Card>
         </Col>
         <Col>
-          <Card className="h-full">
+          <Card className="w-60 sm:w-full h-full">
             <Flex justifyContent="between" alignItems="center">
               <Text className="total font-bold">Portfolio value</Text>
               <BadgeDelta deltaType="moderateIncrease" isIncreasePositive={true} size="xs">
                 +12.3%
               </BadgeDelta>
             </Flex>
-            <Metric className="value text-center text-6xl mt-32">
+            <Metric className="px-0 text-indigo-500 text-center text-3xl sm:text-5xl mt-32">
               {valueFormatter(totalPortfolioValue)}
             </Metric>
           </Card>
         </Col>
         <Col>
-          <Card className="w-full">
+          <Card className="w-60 sm:w-full h-full">
             <Title>Assets Value Breakdown</Title>
             <DonutChart
               className="mt-6"
@@ -67,9 +67,7 @@ export default function Overview({ data }) {
           </Card>
         </Col>
       </Grid>
-      <div className="px-6">
-        <ValueChart />
-      </div>
+      <ValueChart/>
     </div>
   );
 }
