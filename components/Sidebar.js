@@ -12,7 +12,7 @@ export default function Sidebar() {
     const userImage = session.data.user.image
 
     function isSelectedOption(option) {
-        return option.displayName.toLowerCase() === selectedOption
+        return option.refName.toLowerCase() === selectedOption
     }
 
     // The following is much faster than using a useEffect, 
