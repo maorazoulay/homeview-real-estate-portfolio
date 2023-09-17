@@ -67,7 +67,7 @@ export default function Overview({ data }) {
           </Card>
         </Col>
       </Grid>
-      <ValueChart/>
+      <ValueChart data={data}/>
     </div>
   );
 }

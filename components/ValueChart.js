@@ -1,6 +1,6 @@
 import { Card, Title, AreaChart } from "@tremor/react";
 
-const chartdata = [
+const dummyChartData = [
   {
     date: "Jan 22",
     "Assets Value": 200000,
@@ -37,18 +37,20 @@ const dataFormatter = (number) => {
   return "$ " + Intl.NumberFormat("us").format(number).toString();
 };
 
-export default function ValueChart() {
-    return (
-      <Card className="mt-6">
-        <Title>Portfolio value over time (USD)</Title>
-        <AreaChart
-          className="h-96 mt-7"
-          data={chartdata}
-          index="date"
-          categories={["Assets Value", "Equity Value"]}
-          colors={["indigo", "cyan"]}
-          valueFormatter={dataFormatter}
-        />
-      </Card>
-    );
+export default function ValueChart({ data }) {
+  const chartData = !data.length ? data : dummyChartData
+
+  return (
+    <Card className="mt-6">
+      <Title>Portfolio value over time (USD)</Title>
+      <AreaChart
+        className="h-96 mt-7"
+        data={chartData}
+        index="date"
+        categories={["Assets Value", "Equity Value"]}
+        colors={["indigo", "cyan"]}
+        valueFormatter={dataFormatter}
+      />
+    </Card>
+  );
 } 
