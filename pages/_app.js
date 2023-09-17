@@ -12,9 +12,8 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     </SessionProvider>)
 }
 
-// TODO: Create Asset page with update and delete functionality
 // TODO: Fix Topbar - Add filters?
-// TODO: Fix responsiveness of Overview page
+// TODO: Create Asset page with update and delete functionality
 // TODO: Add Homepage
 // TODO: GO TO PRODUCTION!!!
 
