@@ -44,20 +44,6 @@ body {
   color: #defcf9;
 }
 
-.chart-ctn{
-  display: flex;
-  /* border: 3px solid red; */
-}
-
-.value{
-  color: #5b4def;
-  font-size: 3rem;
-}
-
-.total{
-  font-size: 2rem;
-}
-
 input[type="date"]:before {
   content: attr(placeholder) !important;
   color: #aaa;
