@@ -6,6 +6,7 @@ import { readUserAssets } from "@/db/dbOperations"
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth/next"
 import Topbar from "@/components/Topbar"
+import DisplayMessage from "@/components/DisplayMessage"
 
 export default function Assets({ assets }) {
     const assetElements = assets.map(asset => {
@@ -34,7 +35,7 @@ export default function Assets({ assets }) {
         <>
             <Topbar />
             {!assets.length ?
-                (<h1 className="absolute top-1/3 left-1/2 text-2xl font-bold text-indigo-500">No assets, please Add one...</h1>) :
+                (<DisplayMessage message={'No Assets, Please Add Some...'}/>) :
                 (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-7 sm:pl-16 sm:pr-8 pt-20 gap-x-8 gap-y-11">
                     {assetElements}
                 </div>)
