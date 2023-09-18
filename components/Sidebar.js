@@ -9,7 +9,7 @@ export default function Sidebar() {
     const [selectedOption, setSelectedOption] = useState('');
     const router = useRouter()
     const session = useSession()
-    const userImage = session.data.user.image
+    const userImage = session.data?.user.image
 
     function isSelectedOption(option) {
         return option.refName.toLowerCase() === selectedOption
