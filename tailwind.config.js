@@ -10,6 +10,11 @@ module.exports = {
     transparent: "transparent",
     current: "currentColor",
     extend: {
+      spacing: {
+        '112': '28rem',
+        '128': '32rem',
+        '140': '35rem',
+      },
       colors: {
         // light mode
         tremor: {
