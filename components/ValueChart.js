@@ -1,3 +1,4 @@
+import { priceFormatter } from "@/utils/formUtils";
 import { Card, Title, AreaChart } from "@tremor/react";
 
 const dummyChartData = [
@@ -33,9 +34,6 @@ const dummyChartData = [
   },
 ];
 
-const dataFormatter = (number) => {
-  return "$ " + Intl.NumberFormat("us").format(number).toString();
-};
 
 export default function ValueChart({ data }) {
   const chartData = !data.length ? data : dummyChartData
@@ -49,7 +47,7 @@ export default function ValueChart({ data }) {
         index="date"
         categories={["Assets Value", "Equity Value"]}
         colors={["indigo", "cyan"]}
-        valueFormatter={dataFormatter}
+        valueFormatter={priceFormatter}
       />
     </Card>
   );

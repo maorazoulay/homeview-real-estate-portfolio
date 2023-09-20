@@ -14,3 +14,7 @@ export function limitNumberCharacters(event) {
         : `$${Number(event.target.value.replace(/[^\d]+/g, '').slice(0, 11)).toLocaleString('en-US')}`
     event.target.value = newValue
 }
+
+export function priceFormatter(number) {
+    return "$" + Intl.NumberFormat("us").format(number).toString();
+}

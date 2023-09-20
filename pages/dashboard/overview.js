@@ -7,13 +7,13 @@ import {
   Flex, BadgeDelta, Title, DonutChart, Legend
 } from "@tremor/react";
 import ValueChart from "@/components/ValueChart";
+import { priceFormatter } from "@/utils/formUtils";
 
 export default function Overview({ data }) {
   const colors = ["slate", "violet", "indigo", "rose", "cyan", "amber"]
   const legendCategories = data.map(asset => asset.name)
 
   const breakdownFormatter = (number) => `${number.toString()} Assets`;
-  const valueFormatter = (number) => `$ ${Intl.NumberFormat("us").format(number).toString()}`;
   const totalPortfolioValue = data.reduce((accumulator, propertyType) => accumulator + propertyType.value, 0)
 
   return (
@@ -37,15 +37,15 @@ export default function Overview({ data }) {
           </Card>
         </Col>
         <Col>
-          <Card className="w-60 sm:w-full h-full">
+          <Card className="w-60 sm:w-full h-full md:">
             <Flex justifyContent="between" alignItems="center">
-              <Text className="total font-bold">Portfolio value</Text>
+              <Title>Portfolio value</Title>
               <BadgeDelta deltaType="moderateIncrease" isIncreasePositive={true} size="xs">
                 +12.3%
               </BadgeDelta>
             </Flex>
             <Metric className="px-0 text-indigo-500 text-center text-3xl sm:text-5xl mt-32">
-              {valueFormatter(totalPortfolioValue)}
+              {priceFormatter(totalPortfolioValue)}
             </Metric>
           </Card>
         </Col>
@@ -57,7 +57,7 @@ export default function Overview({ data }) {
               data={data}
               category="value"
               index="name"
-              valueFormatter={valueFormatter}
+              valueFormatter={priceFormatter}
               colors={colors}
               variant='pie' />
             <Legend
