@@ -18,3 +18,9 @@ export function limitNumberCharacters(event) {
 export function priceFormatter(number) {
     return "$" + Intl.NumberFormat("us").format(number).toString();
 }
+
+export function dateFormatter(dateString) {
+    const date = new Date(dateString)
+    const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options)
+}
