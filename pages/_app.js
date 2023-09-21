@@ -13,6 +13,9 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
 }
 
 // TODO: Create Asset page with update and delete functionality
+  // TODO: fix details section when text is too long amd also finish styling 
+  // TODO: implement edit and delete functionality 
+  // TODO: Fix responsiveness 
 // TODO: GO TO PRODUCTION!!!
 
 // configure cache control headers for SSR, see: https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#caching
