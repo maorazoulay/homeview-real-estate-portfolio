@@ -15,6 +15,10 @@ module.exports = {
         '128': '32rem',
         '140': '35rem',
       },
+      height: {
+        '9/10': '90%',
+        '95%': '95%'
+      },
       colors: {
         // light mode
         tremor: {
