@@ -26,24 +26,26 @@ export default function Page() {
   if (!response) return <div>Loading...</div>
 
   return (
-    <div className='h-full pt-6'>
-      <h1 className='text-center text-5xl font-bold text-indigo-700 overline'>{asset.title}</h1>
-      <div className='flex justify-center p-6 gap-2'>
-        <SimpleImageSlider
-          width={896}
-          height={700}
-          images={images}
-          showBullets={true}
-          showNavs={true}
-          style={{ perspective: '1px', borderRadius: '0.75rem' }}
-        />
-        <div className='flex flex-col justify-between bg-indigo-50 rounded-xl p-3'>
-          <ul className=''>
-            <li className='border-b-2 py-3 text-2xl border-indigo-500'> <span className='font-bold underline'>Address:</span> {asset.address}</li>
-            <li className='border-b-2 py-3 text-2xl border-indigo-500'><span className='font-bold underline'>Property Type:</span> {asset.propertyType}</li>
-            <li className='border-b-2 py-3 text-2xl border-indigo-500'><span className='font-bold underline'>Purchase Price:</span> {priceFormatter(asset.purchasePrice)}</li>
-            <li className='border-b-2 py-3 text-2xl border-indigo-500'><span className='font-bold underline'>Purchase Date:</span> {dateFormatter(asset.purchaseDate)}</li>
-            <li className='border-b-2 py-3 text-2xl border-indigo-500'><span className='font-bold underline'>Market Value:</span> {priceFormatter(asset.marketValue)}</li>
+    <div className='h-full pt-2'>
+      <h1 className='text-center text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-indigo-700 overline'>{asset.title}</h1>
+      <div className='h-95% lg:h-9/10 flex flex-col items-center lg:flex-row justify-center px-3 pt-2 lg:p-5 gap-4 sm:gap-2 lg:mt-4'>
+        <div className='w-full h-2/3 lg:h-full'>
+          <SimpleImageSlider
+            width={'100%'}
+            height={'100%'}
+            images={images}
+            showBullets={true}
+            showNavs={true}
+            style={{ perspective: '1px', borderRadius: '0.75rem'}}
+          />
+        </div>
+        <div className='flex flex-col w-full h-full justify-between bg-indigo-50 rounded-xl p-3'>
+          <ul className='text-1xl sm:text-2xl'>
+            <li className='border-b-2 py-3 border-indigo-500'> <span className='font-bold underline'>Address:</span> {asset.address}</li>
+            <li className='border-b-2 py-3 border-indigo-500'><span className='font-bold underline'>Property Type:</span> {asset.propertyType}</li>
+            <li className='border-b-2 py-3 border-indigo-500'><span className='font-bold underline'>Purchase Price:</span> {priceFormatter(asset.purchasePrice)}</li>
+            <li className='border-b-2 py-3 border-indigo-500'><span className='font-bold underline'>Purchase Date:</span> {dateFormatter(asset.purchaseDate)}</li>
+            <li className='border-b-2 py-3 border-indigo-500'><span className='font-bold underline'>Market Value:</span> {priceFormatter(asset.marketValue)}</li>
           </ul>
           <div className='flex justify-center border-t-2 border-indigo-600 p-2 gap-8'>
             <button
