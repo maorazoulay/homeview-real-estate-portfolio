@@ -10,7 +10,6 @@ export default function Modal() {
 
   return (
     <>
-
       <button
         className="hvr-buzz-out bg-indigo-700 text-white active:bg-indigo-900 font-bold uppercase text-sm px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
