@@ -24,3 +24,11 @@ export function dateFormatter(dateString) {
     const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('en-US', options)
 }
+
+export function handleDisablingButton(formData, disabledSubmit, setDisabledSubmit) {
+    // enable submit button when all values are provided
+    const shouldDisable = !Object.values(formData).every(item => item)
+    if (shouldDisable !== disabledSubmit) {
+        setDisabledSubmit(shouldDisable)
+    }
+}
