@@ -26,9 +26,7 @@ export function dateFormatter(dateString) {
 }
 
 export function dateFormatterShort(dateString) {
-    const date = new Date(dateString)
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return date.toLocaleDateString('en-US', options).replaceAll('/', '-')
+    return new Date(dateString).toISOString().slice(0, 10)
 }
 
 export function handleDisablingButton(formData, disabledSubmit, setDisabledSubmit) {
