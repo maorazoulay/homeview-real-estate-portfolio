@@ -1,7 +1,6 @@
 import { limitNumberCharacters, getClassesForSubmitButton, priceFormatter, dateFormatterShort } from "@/utils/formUtils"
 
-export default function EditAssetForm({ title, formData, handleChange, handleSubmit, disabledSubmit, onClose }) {
-    console.log('short date', dateFormatterShort(formData.purchaseDate));
+export default function EditAssetForm({ title, formData, handleChange, handleSubmit, disableSubmit, onClose }) {
     return (
         <>
             <div className="flex flex-col justify-center items-center text-center min-h-screen overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
@@ -49,7 +48,7 @@ export default function EditAssetForm({ title, formData, handleChange, handleSub
                                         <label htmlFor="marketValue" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Market Value</label>
                                     </div>
                                     <div className="relative">
-                                        <button type="submit" className={getClassesForSubmitButton(disabledSubmit)} disabled={disabledSubmit}>Submit</button>
+                                        <button type="submit" className={getClassesForSubmitButton(disableSubmit)} disabled={disableSubmit}>Submit</button>
                                     </div>
                                 </div>
                             </div>

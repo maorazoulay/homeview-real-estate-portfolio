@@ -29,10 +29,10 @@ export function dateFormatterShort(dateString) {
     return new Date(dateString).toISOString().slice(0, 10)
 }
 
-export function handleDisablingButton(formData, disabledSubmit, setDisabledSubmit) {
+export function handleDisablingButton(formData, disableSubmit, setDisableSubmit) {
     // enable submit button when all values are provided
     const shouldDisable = !Object.values(formData).every(item => item)
-    if (shouldDisable !== disabledSubmit) {
-        setDisabledSubmit(shouldDisable)
+    if (shouldDisable !== disableSubmit) {
+        setDisableSubmit(shouldDisable)
     }
 }

@@ -14,7 +14,7 @@ export default function Asset({ asset }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [disabledSubmit, setDisabledSubmit] = useState(false)
+  const [disableSubmit, setDisableSubmit] = useState(false)
   const router = useRouter()
   const assetId = asset._id
 
@@ -22,8 +22,8 @@ export default function Asset({ asset }) {
 
   useEffect(() => {
     // enable submit button when all values are provided
-    handleDisablingButton(tempAsset, disabledSubmit, setDisabledSubmit)
-  }, [tempAsset, disabledSubmit])
+    handleDisablingButton(tempAsset, disableSubmit, setDisableSubmit)
+  }, [tempAsset, disableSubmit])
 
   const images = asset.images.map(image => {
     return { url: image }
@@ -110,7 +110,7 @@ export default function Asset({ asset }) {
               formData={tempAsset}
               handleChange={handleChange}
               handleSubmit={editAsset}
-              disabledSubmit={disabledSubmit}
+              disableSubmit={disableSubmit}
               onClose={() => setShowEditModal(false)} />}
             {showDeleteModal && !loading && <ConfirmationDialog
               message={'Are you sure you want to delete this asset?'}
