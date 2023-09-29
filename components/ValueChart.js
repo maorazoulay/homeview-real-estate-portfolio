@@ -4,33 +4,33 @@ import { Card, Title, AreaChart } from "@tremor/react";
 const dummyChartData = [
   {
     date: "Jan 22",
-    "Assets Value": 200000,
-    "Equity Value": 50000,
+    "Assets Value": 4750000,
+    "Equity Value": 830000,
   },
   {
     date: "Feb 22",
-    "Assets Value": 220000,
-    "Equity Value": 53000,
+    "Assets Value": 4960000,
+    "Equity Value": 845000,
   },
   {
     date: "Mar 22",
-    "Assets Value": 250000,
-    "Equity Value": 57000,
+    "Assets Value": 5230000,
+    "Equity Value": 870000,
   },
   {
     date: "Apr 22",
-    "Assets Value": 255000,
-    "Equity Value": 63000,
+    "Assets Value": 5300000,
+    "Equity Value": 995000,
   },
   {
     date: "May 22",
-    "Assets Value": 272000,
-    "Equity Value": 79000,
+    "Assets Value": 5420000,
+    "Equity Value": 1020000,
   },
   {
     date: "Jun 22",
-    "Assets Value": 279000,
-    "Equity Value": 86000,
+    "Assets Value": 5585000,
+    "Equity Value": 1156000,
   },
 ];
 
