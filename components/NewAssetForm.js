@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import Spinner from "./Spinner";
 
 
-export default function AssetForm({ onClose }) {
+export default function NewAssetForm({ onClose }) {
     const [formData, setFormData] = useState({
         title: "",
         address: "",

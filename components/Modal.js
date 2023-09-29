@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AssetForm from "./AssetForm";
+import NewAssetForm from "./NewAssetForm";
 
 export default function Modal() {
   const [showModal, setShowModal] = useState(false);
@@ -20,7 +20,7 @@ export default function Modal() {
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <AssetForm onClose={onClose}/>
+            <NewAssetForm onClose={onClose}/>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
