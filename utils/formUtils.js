@@ -26,7 +26,11 @@ export function dateFormatter(dateString) {
 }
 
 export function dateFormatterShort(dateString) {
-    return new Date(dateString).toISOString().slice(0, 10)
+    try{
+         return new Date(dateString).toISOString().slice(0, 10)
+    } catch(e){
+        return dateString 
+    }
 }
 
 export function handleDisablingButton(formData, disableSubmit, setDisableSubmit) {
