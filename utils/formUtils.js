@@ -25,6 +25,12 @@ export function dateFormatter(dateString) {
     return date.toLocaleDateString('en-US', options)
 }
 
+export function dateFormatterShort(dateString) {
+    const date = new Date(dateString)
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return date.toLocaleDateString('en-US', options).replaceAll('/', '-')
+}
+
 export function handleDisablingButton(formData, disabledSubmit, setDisabledSubmit) {
     // enable submit button when all values are provided
     const shouldDisable = !Object.values(formData).every(item => item)
