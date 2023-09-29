@@ -36,12 +36,7 @@ export async function findAssetById(assetId) {
 
 export async function updateAsset(assetId, data) {
     await dbConnect()
-    const asset = await Asset.findByIdAndUpdate(
-        assetId,
-        JSON.stringify(data), {
-        new: true,
-        runValidators: true,
-    })
+    const asset = await Asset.findByIdAndUpdate(assetId, data, { new: true })
     return JSON.parse(JSON.stringify(asset))
 }
 

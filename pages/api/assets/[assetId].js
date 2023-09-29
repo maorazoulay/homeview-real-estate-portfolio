@@ -32,7 +32,8 @@ export default async function handler(req, res) {
 
     case 'PUT':
       try {
-        const asset = await updateAsset(assetId, req.body)
+        let data = JSON.parse(req.body)
+        const asset = await updateAsset(assetId, data)
         if (!asset) {
           return res.status(400).json({ success: false })
         }
