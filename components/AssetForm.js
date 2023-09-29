@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useS3Upload } from "next-s3-upload";
-import { extractPriceValue, getClassesForSubmitButton, limitNumberCharacters } from "@/utils/formUtils";
+import { extractPriceValue, getClassesForSubmitButton, handleDisablingButton, limitNumberCharacters } from "@/utils/formUtils";
 import { useRouter } from 'next/router'
 import Spinner from "./Spinner";
 
@@ -28,6 +28,11 @@ export default function AssetForm({ onClose }) {
             router.reload()
         }
     }, [finish, router])
+
+    useEffect(() => {
+        // enable submit button when all values are provided
+        handleDisablingButton(formData, disabledSubmit, setDisabledSubmit)
+    }, [formData, disabledSubmit])
 
     function handleChange({ target }) {
         const { name, value } = target
@@ -88,12 +93,6 @@ export default function AssetForm({ onClose }) {
                 // setLoading(false)
                 setFinish(true)
             })
-    }
-
-    // enable submit button when all values are provided
-    const shouldDisable = !Object.values(formData).every(item => item)
-    if (shouldDisable !== disabledSubmit) {
-        setDisabledSubmit(shouldDisable)
     }
 
     return (
