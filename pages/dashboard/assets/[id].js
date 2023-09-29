@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import DashboardLayout from '@/components/DashboardLayout'
 import SimpleImageSlider from "react-simple-image-slider"
-import { priceFormatter, dateFormatter, getClassesForSubmitButton, handleDisablingButton } from '@/utils/formUtils'
+import { priceFormatter, dateFormatter, handleDisablingButton, extractPriceValue } from '@/utils/formUtils'
 import ConfirmationDialog from '@/components/ConfirmationDialog'
 import Spinner from "@/components/Spinner"
 import { findAssetById } from "@/db/dbOperations"
@@ -10,15 +10,20 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import EditAssetForm from "@/components/EditAssetForm"
 export default function Asset({ asset }) {
-  const [tempAsset, setTempAsset] = useState(asset)
+  const [tempAsset, setTempAsset] = useState({
+    title: asset.title,
+    address: asset.address,
+    propertyType: asset.propertyType,
+    purchaseDate: asset.purchaseDate, 
+    purchasePrice: asset.purchasePrice,
+    marketValue: asset.marketValue
+  })
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false)
   const router = useRouter()
   const assetId = asset._id
-
-  console.log('tempAsset', tempAsset);
 
   useEffect(() => {
     // enable submit button when all values are provided
@@ -29,8 +34,8 @@ export default function Asset({ asset }) {
     return { url: image }
   })
 
-  function makeRequest(method, requestAction, successAction) {
-    fetch(`/api/assets/${assetId}`, { method: method })
+  function makeRequest(method, requestAction, successAction, payload) {
+    fetch(`/api/assets/${assetId}`, { method: method, body: payload })
       .then(response => response.json())
       .then(responseData => {
         if (responseData.success) {
@@ -45,31 +50,25 @@ export default function Asset({ asset }) {
 
   function editAsset(event) {
     event.preventDefault()
-    setLoading(true)
-    makeRequest('PUT', 'update', (router) => router.reload())
     setShowEditModal(false)
-    setLoading(false)
+    setLoading(true)
+    const payload = JSON.stringify(tempAsset)
+    makeRequest('PUT', 'update', (router) => router.reload(), payload)
   }
 
   function deleteAsset() {
     setLoading(true)
-    console.log('deleting', assetId);
-    fetch(`/api/assets/${assetId}`, { method: 'DELETE' })
-      .then(response => response.json())
-      .then(responseData => {
-        if (responseData.success) {
-          router.push('/dashboard/assets')
-        } else {
-          console.log('Failed to delete asset');
-        }
-      }).catch((error) => {
-        console.error(`Error while trying to delete: ${error.message}`);
-      })
+    makeRequest('DELETE', 'delete', (router) => router.push('/dashboard/assets'))
   }
 
   function handleChange({ target }) {
     const { name, value } = target
     setTempAsset((prevAssetData) => ({ ...prevAssetData, [name]: value }))
+  }
+
+  function handleNumberChange({ target }) {
+    const { name, value } = target
+    setTempAsset((prevAssetData) => ({ ...prevAssetData, [name]: extractPriceValue(value) }))
   }
 
   return (
@@ -94,14 +93,14 @@ export default function Asset({ asset }) {
             <li className='border-b-2 py-3 border-indigo-500'><span className='font-bold underline'>Purchase Date:</span> {dateFormatter(asset.purchaseDate)}</li>
             <li className='border-b-2 py-3 border-indigo-500'><span className='font-bold underline'>Market Value:</span> {priceFormatter(asset.marketValue)}</li>
           </ul>
-          <div className='flex justify-center border-t-2 border-indigo-600 p-2 gap-8'>
+          <div className='flex justify-center border-t-2 border-indigo-600 pt-4 px-2 gap-4 sm:gap-16'>
             <button
-              className="hvr-hang bg-indigo-700 text-white active:bg-indigo-900 font-bold text-sm px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              className="hvr-hang bg-indigo-700 text-white active:bg-indigo-900 font-bold text-sm px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
               type="button"
               onClick={() => setShowEditModal(true)}>Edit Asset
             </button>
             <button
-              className="hvr-hang bg-red-600 text-white active:bg-red-800 font-bold text-sm px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              className="hvr-hang bg-red-600 text-white active:bg-red-800 font-bold text-sm px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
               type="button"
               onClick={() => setShowDeleteModal(true)}>Delete Asset
             </button>
@@ -109,6 +108,7 @@ export default function Asset({ asset }) {
               title={'Edit Asset'}
               formData={tempAsset}
               handleChange={handleChange}
+              handleNumberChange={handleNumberChange}
               handleSubmit={editAsset}
               disableSubmit={disableSubmit}
               onClose={() => setShowEditModal(false)} />}
