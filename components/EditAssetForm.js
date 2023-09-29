@@ -1,6 +1,6 @@
 import { limitNumberCharacters, getClassesForSubmitButton, priceFormatter, dateFormatterShort } from "@/utils/formUtils"
 
-export default function EditAssetForm({ title, formData, handleChange, handleSubmit, disableSubmit, onClose }) {
+export default function EditAssetForm({ title, formData, handleChange, handleNumberChange, handleSubmit, disableSubmit, onClose }) {
     return (
         <>
             <div className="flex flex-col justify-center items-center text-center min-h-screen overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
@@ -40,11 +40,11 @@ export default function EditAssetForm({ title, formData, handleChange, handleSub
                                         <label htmlFor="purchaseDate" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Purchase Date</label>
                                     </div>
                                     <div className="relative">
-                                        <input type="text" id="purchasePrice" autoComplete="off" name="purchasePrice" value={priceFormatter(formData.purchasePrice)} onChange={handleChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Purchase Price" onInput={limitNumberCharacters} />
+                                        <input type="text" id="purchasePrice" autoComplete="off" name="purchasePrice" value={priceFormatter(formData.purchasePrice)} onChange={handleNumberChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Purchase Price" onInput={limitNumberCharacters} />
                                         <label htmlFor="purchasePrice" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Purchase Price</label>
                                     </div>
                                     <div className="relative">
-                                        <input type="text" id="marketValue" autoComplete="off" name="marketValue" value={priceFormatter(formData.marketValue)} onChange={handleChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Market Value" onInput={limitNumberCharacters} />
+                                        <input type="text" id="marketValue" autoComplete="off" name="marketValue" value={priceFormatter(formData.marketValue)} onChange={handleNumberChange} className="peer placeholder-transparent h-10 w-full border-b-2 border-indigo-500 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Market Value" onInput={limitNumberCharacters} />
                                         <label htmlFor="marketValue" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm required">Market Value</label>
                                     </div>
                                     <div className="relative">
