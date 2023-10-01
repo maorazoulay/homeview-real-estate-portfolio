@@ -73,7 +73,7 @@ export default function Asset({ asset }) {
 
   return (
     <div className='h-full pt-2'>
-      <h1 className='text-center text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-indigo-700 overline'>{asset.title}</h1>
+      <h1 className='text-center drop-shadow-2xl text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-indigo-700 overline'>{asset.title}</h1>
       <div className='h-95% lg:h-9/10 flex flex-col items-center lg:flex-row justify-center px-3 pt-2 lg:p-5 gap-4 sm:gap-2 lg:mt-4'>
         <div className='w-full h-2/3 lg:h-full'>
           <SimpleImageSlider
