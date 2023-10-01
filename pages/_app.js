@@ -12,9 +12,8 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     </SessionProvider>)
 }
 
-// TODO: Create Asset page with update and delete functionality
-  // TODO: implement edit functionality 
 // TODO: GO TO PRODUCTION!!!
-
-// configure cache control headers for SSR, see: https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#caching
-// Add the env variable NEXTAUTH_URL='cannonical URL' in production? - env vars in Vercel Dashboard
+  // TODO: Fix overview responsiveness
+  // TODO: Copy data from other database
+  // TODO: Make home page with getStaticProps
+  // TODO: configure cache control headers for SSR, see: https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#caching
