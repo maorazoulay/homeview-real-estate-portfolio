@@ -1,38 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Welcome to HomeView, a website where you can keep track of your Real-Estate assets, for free! 👋</h1>
 
-## Getting Started
+This is a [Next.js](https://nextjs.org/) project featuring authentication from [NextAuth.js](https://next-auth.js.org/) and [TailwindCSS](https://tailwindcss.com/) for styling repsonsivness design.
 
-First, run the development server:
+## 🏠 [Homepage]([https://trivia-quizzical-react-app.netlify.app](https://homeview.vercel.app))
+![Home Page](https://github.com/maorazoulay/homeview-portfolio-tracker/blob/master/public/Home%20Page.jpg)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Track your assets using the assets page
+![Assets Page](https://github.com/maorazoulay/homeview-portfolio-tracker/blob/master/public/Assets%20Page.jpg)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Gain insights by checking out the Overview page
+![Overview Page](https://github.com/maorazoulay/homeview-portfolio-tracker/blob/master/public/Overview%20Page.jpg)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Add assets using the Assets page
+![Add Asset Page](https://github.com/maorazoulay/homeview-portfolio-tracker/blob/master/public/Add%20Asset%20Page.jpg)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## View, Edit and Delete assets from the Single Assets Page
+![Single Asset Page](https://github.com/maorazoulay/homeview-portfolio-tracker/blob/master/public/Single%20Asset%20Page.jpg)
 
+**Also check out the website for all other features.**
+
+## API
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [https://homeview.vercel.app/api/[...]](https://homeview.vercel.app/api/[...])
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Check out the code for endpoints and corresponnding CRUD operations.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Author
 
-## Learn More
+👤 **Maor Azoulay**
 
-To learn more about Next.js, take a look at the following resources:
+* LinkedIn: [@maorazoulay](https://linkedin.com/in/maorazoulay)
+* Twitter: [@maor\_azoulay](https://twitter.com/maor\_azoulay)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Show your support
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Give a ⭐️ if this project helped you!
