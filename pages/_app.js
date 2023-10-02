@@ -14,6 +14,5 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
 
 // TODO: GO TO PRODUCTION!!!
   // TODO: Fix overview responsiveness
-  // TODO: Copy data from other database
-  // TODO: Make home page with getStaticProps
+  // TODO: Update README
   // TODO: configure cache control headers for SSR, see: https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#caching
