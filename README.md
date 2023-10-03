@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to <a href="https://homeview.vercel.app/" target="_blank">HomeView</a>, a website where you can keep track of your Real-Estate assets, for free! 👋</h1>
 
-This is a [Next.js](https://nextjs.org/) project featuring authentication from [NextAuth.js](https://next-auth.js.org/) and [TailwindCSS](https://tailwindcss.com/) for styling repsonsivness design.
+This is a [Next.js](https://nextjs.org/) project featuring authentication from [NextAuth.js](https://next-auth.js.org/) and [TailwindCSS](https://tailwindcss.com/) for styling and repsonsivness.
 
 ## 🏠 [Homepage]([https://trivia-quizzical-react-app.netlify.app](https://homeview.vercel.app))
 ![Home Page](https://github.com/maorazoulay/homeview-portfolio-tracker/blob/master/public/Home%20Page.jpg)
