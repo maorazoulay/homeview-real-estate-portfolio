@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to <a href="https://homeview.vercel.app/" target="_blank">HomeView</a>, a website where you can keep track of your Real-Estate assets, for free! 👋</h1>
+<h1 align="center">Welcome to <a href="https://homeview.vercel.app/" target="_blank">HomeView</a>  👋, a website where you can keep track of your Real-Estate assets, for free!</h1>
 
 This is a [Next.js](https://nextjs.org/) project featuring authentication from [NextAuth.js](https://next-auth.js.org/) and [TailwindCSS](https://tailwindcss.com/) for styling and repsonsivness.
 
@@ -14,7 +14,7 @@ This is a [Next.js](https://nextjs.org/) project featuring authentication from [
 ## Add assets using the Assets page
 ![Add Asset Page](https://github.com/maorazoulay/homeview-portfolio-tracker/blob/master/public/Add%20Asset%20Page.jpg)
 
-## View, Edit and Delete assets from the Single Assets Page
+## View, Edit and Delete assets from the Single Asset Page
 ![Single Asset Page](https://github.com/maorazoulay/homeview-portfolio-tracker/blob/master/public/Single%20Asset%20Page.jpg)
 
 **Also check out the website for all other features.**
